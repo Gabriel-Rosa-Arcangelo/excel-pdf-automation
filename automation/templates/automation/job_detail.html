@@ -1,0 +1,78 @@
+{% extends "automation/base.html" %}
+{% block content %}
+<h2 class="text-lg font-semibold mb-4">Job {{ job.id }}</h2>
+<div id="card" class="bg-[#111729] rounded-xl p-6">
+  <div class="flex items-center justify-between">
+    <div>Status: <span id="status" class="font-semibold">{{ job.status }}</span></div>
+    <div><span id="progress">{{ job.progress }}</span>%</div>
+  </div>
+  <div class="w-full bg-gray-700 h-2 rounded mt-2">
+    <div id="bar" class="bg-cyan-500 h-2 rounded" style="width: {{ job.progress }}%"></div>
+  </div>
+  <div class="mt-4">
+    <h3 class="font-semibold mb-2">Recent logs</h3>
+    <ul id="logs" class="text-sm text-gray-300 space-y-1">
+      {% for e in job.log|slice:"-5:" %}
+      <li>• {{ e.level|upper }} — {{ e.msg }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="mt-6">
+    <h3 class="font-semibold mb-2">Reports</h3>
+    <ul id="reports" class="text-sm text-gray-300 space-y-1">
+      {% for r in job.reports.all %}
+      <li><a class="text-cyan-400 hover:underline" href="{{ r.file.url }}" download>{{ r.filename }}</a></li>
+      {% empty %}
+      <li>No reports yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+  <script>
+  const jobId = "{{ job.id }}";
+  async function poll() {
+    const r = await fetch(`/api/status/${jobId}/`);
+    const data = await r.json();
+  
+    // status/progress
+    document.getElementById('status').innerText = data.status;
+    document.getElementById('progress').innerText = data.progress;
+    document.getElementById('bar').style.width = data.progress + '%';
+  
+    // logs
+    const logsEl = document.getElementById('logs');
+    logsEl.innerHTML = '';
+    (data.log || []).forEach(e => {
+      const li = document.createElement('li');
+      li.textContent = `• ${e.level?.toUpperCase?.() || 'INFO'} — ${e.msg}`;
+      logsEl.appendChild(li);
+    });
+  
+    // reports (NOVO)
+    const repEl = document.getElementById('reports');
+    repEl.innerHTML = '';
+    if ((data.reports || []).length) {
+      data.reports.forEach(rep => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = rep.url;
+        a.textContent = rep.filename;
+        a.className = "text-cyan-400 hover:underline";
+        a.setAttribute('download', '');
+        li.appendChild(a);
+        repEl.appendChild(li);
+      });
+    } else {
+      const li = document.createElement('li');
+      li.textContent = 'No reports yet.';
+      repEl.appendChild(li);
+    }
+  
+    if (data.status === 'done' || data.status === 'failed') return;
+    setTimeout(poll, 1500);
+  }
+  poll();
+</script>
+  
+{% endblock %}

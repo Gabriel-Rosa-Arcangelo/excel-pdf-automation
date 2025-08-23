@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Excel → PDF Automation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0B0F19] text-gray-200">
+  <header class="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between">
+    <h1 class="text-xl font-semibold">Excel → PDF Automation</h1>
+    <nav class="space-x-4 text-sm">
+      <a class="hover:underline" href="{% url 'upload' %}">Upload</a>
+      <a class="hover:underline" href="{% url 'jobs_list' %}">Jobs</a>
+    </nav>
+  </header>
+  <main class="max-w-5xl mx-auto px-4 py-6">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 py-8 text-xs text-gray-400">
+    Built with Django • Celery • Pandas • ReportLab
+  </footer>
+</body>
+</html>

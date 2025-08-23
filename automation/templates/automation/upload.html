@@ -1,0 +1,15 @@
+{% extends "automation/base.html" %}
+{% block content %}
+<div class="bg-[#111729] rounded-2xl p-8 shadow-lg">
+  <h2 class="text-lg font-semibold mb-4">Upload Excel/CSV</h2>
+  <form method="post" enctype="multipart/form-data" class="space-y-4">
+    {% csrf_token %}
+    <input type="file" name="file" accept=".xlsx,.xls,.csv"
+           class="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
+                  file:text-sm file:font-semibold file:bg-cyan-500 file:text-white
+                  hover:file:bg-cyan-400">
+    <button class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg">Process</button>
+  </form>
+  <p class="text-sm text-gray-400 mt-4">Accepted: .xlsx, .xls, .csv</p>
+</div>
+{% endblock %}

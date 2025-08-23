@@ -1,0 +1,21 @@
+{% extends "automation/base.html" %}
+{% block content %}
+<h2 class="text-lg font-semibold mb-4">Recent Jobs</h2>
+<div class="grid md:grid-cols-2 gap-4">
+  {% for j in jobs %}
+  <a href="{% url 'job_detail' j.id %}" class="block bg-[#111729] rounded-xl p-5 hover:ring-1 hover:ring-cyan-400 transition">
+    <div class="text-sm text-gray-400">{{ j.created_at }}</div>
+    <div class="mt-2 flex items-center justify-between">
+      <div>Status: <span class="font-semibold">{{ j.status }}</span></div>
+      <div class="text-sm">{{ j.progress }}%</div>
+    </div>
+    <div class="w-full bg-gray-700 h-2 rounded mt-2">
+      <div class="bg-cyan-500 h-2 rounded" style="width: {{ j.progress }}%"></div>
+    </div>
+    <div class="mt-2 text-sm text-gray-400">Reports: {{ j.report_count }}</div>
+  </a>
+  {% empty %}
+  <p>No jobs yet. Upload a file to get started.</p>
+  {% endfor %}
+</div>
+{% endblock %}
