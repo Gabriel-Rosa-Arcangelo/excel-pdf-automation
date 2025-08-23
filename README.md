@@ -43,28 +43,28 @@ docker run -p 6379:6379 redis:7
 celery -A project worker -l info
 
 # Run Django server
-python manage.py runserver```
+python manage.py runserver
 
-
-## Screenshots
-
-### Base
-<img src="docs/screenshot-base.png" width="600"/>
-
-### Job progress
+Then open: http://127.0.0.1:8000
+📸 Screenshots
+Upload
 <img src="docs/screenshot-upload.png" width="600"/>
-
-### jobs
+Job progress
 <img src="docs/screenshot-job.png" width="600"/>
+PDF output
+<img src="docs/screenshot-pdf.png" width="600"/>
 
-📄 [Download sample PDF report](docs/sample_report.pdf)
-
+📄 Download a sample PDF report
 📌 Use Cases
 
-Healthcare / Biotech reports (patient data → PDF)
-Finance dashboards (Excel → structured reports)
-Enterprise workflows automation
-Any repetitive reporting task that needs background processing
+    Healthcare / Biotech reports (patient data → PDF)
 
-Built with ❤️ by Gabriel Rosa Arcangelo (@Gabriel-Rosa-Arcangelo)
-Need automation or custom systems? Let’s connect on LinkedIn
+    Finance dashboards (Excel → structured reports)
+
+    Enterprise workflows automation
+
+    Any repetitive reporting task that needs background processing
+
+📄 License
+
+MIT
