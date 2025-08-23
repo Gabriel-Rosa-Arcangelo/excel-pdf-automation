@@ -44,27 +44,34 @@ celery -A project worker -l info
 
 # Run Django server
 python manage.py runserver
+```
 
 Then open: http://127.0.0.1:8000
-📸 Screenshots
-Upload
+
+---
+
+## 📸 Screenshots
+
+### Upload
 <img src="docs/screenshot-upload.png" width="600"/>
-Job progress
+
+### Job progress
 <img src="docs/screenshot-job.png" width="600"/>
-PDF output
+
+### PDF output
 <img src="docs/screenshot-pdf.png" width="600"/>
 
-📄 Download a sample PDF report
-📌 Use Cases
+📄 [Download a sample PDF report](docs/sample_report.pdf)
 
-    Healthcare / Biotech reports (patient data → PDF)
+---
 
-    Finance dashboards (Excel → structured reports)
+## 📌 Use Cases
+- Healthcare / Biotech reports (patient data → PDF)  
+- Finance dashboards (Excel → structured reports)  
+- Enterprise workflows automation  
+- Any repetitive reporting task that needs background processing  
 
-    Enterprise workflows automation
+---
 
-    Any repetitive reporting task that needs background processing
-
-📄 License
-
+## 📄 License
 MIT
