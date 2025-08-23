@@ -58,7 +58,7 @@ Then open: http://127.0.0.1:8000
 ### Upload
 <img src="docs/screenshot-upload.png" width="600"/>
 
-### jobs
+### Jobs
 <img src="docs/screenshot-job.png" width="600"/>
 
 📄 [Download a sample PDF report](docs/sample_report.pdf)
