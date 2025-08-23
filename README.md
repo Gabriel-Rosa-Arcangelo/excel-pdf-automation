@@ -75,3 +75,6 @@ Then open: http://127.0.0.1:8000
 
 ## 📄 License
 MIT
+
+Built with ❤️ by Gabriel Rosa Arcangelo (@Gabriel-Rosa-Arcangelo)
+Need healthcare automation or custom systems? Let’s connect on LinkedIn!
