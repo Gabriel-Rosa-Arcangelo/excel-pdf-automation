@@ -82,10 +82,5 @@ Then open: http://127.0.0.1:8000
 - Enterprise workflows automation  
 - Any repetitive reporting task that needs background processing  
 
----
-
-## 📄 License
-MIT
-
 Built with ❤️ by Gabriel Rosa Arcangelo (@Gabriel-Rosa-Arcangelo)
 Need healthcare automation or custom systems? Let’s connect on LinkedIn!
