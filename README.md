@@ -27,6 +27,17 @@ Perfect for automating report generation in data-heavy workflows.
 
 ## 🖥️ Quickstart (Local)
 
+### Docker Compose
+
+```bash
+cp .env.example .env
+docker compose up --build
+```
+
+Then open: http://127.0.0.1:8000
+
+### Python environment
+
 ```bash
 # Install dependencies
 pip install -r requirements.txt
